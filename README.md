@@ -142,3 +142,175 @@ Calls the first multiply() method.
 Prints: "Multiplication of 2 numbers: 12".
 
 Calls multiply() with three numbers (2, 3, 4):
+
+
+
+
+
+Superclass: Animal
+java
+Copy
+Edit
+class Animal {
+    // Method to be overridden
+    public void makeSound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+The Animal class contains a general method makeSound().
+
+This method will be overridden in the subclasses.
+
+2. Subclass: Dog
+java
+Copy
+Edit
+class Dog extends Animal {
+    @Override
+    public void makeSound() {
+        System.out.println("Dog barks: Woof Woof!");
+    }
+}
+The Dog class inherits from Animal using extends.
+
+It overrides makeSound() to provide a specific implementation ("Dog barks: Woof Woof!").
+
+The @Override annotation ensures the method correctly overrides the superclass method.
+
+3. Subclass: Cat
+java
+Copy
+Edit
+class Cat extends Animal {
+    @Override
+    public void makeSound() {
+        System.out.println("Cat meows: Meow Meow!");
+    }
+}
+Similar to Dog, the Cat class inherits from Animal.
+
+It overrides makeSound() to provide its own implementation ("Cat meows: Meow Meow!").
+
+4. Demonstrating Polymorphism
+java
+Copy
+Edit
+public class AnimalSoundDemo {
+    public static void main(String[] args) {
+        Animal myDog = new Dog(); // Dog object with Animal reference
+        Animal myCat = new Cat(); // Cat object with Animal reference
+
+        myDog.makeSound(); // Calls Dog's overridden method
+        myCat.makeSound(); // Calls Cat's overridden method
+    }
+}
+Key Concepts Demonstrated:
+✅ Polymorphism:
+
+Animal myDog = new Dog(); and Animal myCat = new Cat(); demonstrate dynamic method dispatch.
+
+The method called is based on the actual object type (Dog or Cat), not the reference type (Animal).
+
+✅ Dynamic Method Dispatch:
+
+When myDog.makeSound() is called, Java dynamically determines that myDog is a Dog, so it calls Dog's makeSound().
+
+Similarly, myCat.makeSound() calls Cat's overridden method.
+
+Expected Output
+yaml
+Copy
+Edit
+Dog barks: Woof Woof!
+Cat meows: Meow Meow!
+This output shows how Java correctly calls the overridden methods of the respective subclasses.
+
+
+
+
+
+
+
+
+1. Abstract Class: Appliance
+java
+Copy
+Edit
+abstract class Appliance {
+    // Abstract method to be implemented by subclasses
+    abstract void turnOn();
+}
+The Appliance class is abstract (using abstract keyword), meaning it cannot be instantiated.
+
+It contains an abstract method turnOn(), which has no implementation.
+
+The subclasses (Fan and TV) must implement this method.
+
+2. Subclass: Fan
+java
+Copy
+Edit
+class Fan extends Appliance {
+    @Override
+    void turnOn() {
+        System.out.println("Fan is now spinning!");
+    }
+}
+Fan inherits from Appliance using extends.
+
+It implements the turnOn() method with specific behavior: "Fan is now spinning!".
+
+3. Subclass: TV
+java
+Copy
+Edit
+class TV extends Appliance {
+    @Override
+    void turnOn() {
+        System.out.println("TV is now displaying channels!");
+    }
+}
+TV inherits from Appliance and implements turnOn().
+
+It provides its own behavior: "TV is now displaying channels!".
+
+4. Demonstrating Abstraction
+java
+Copy
+Edit
+public class ApplianceDemo {
+    public static void main(String[] args) {
+        Appliance myFan = new Fan(); // Fan object
+        Appliance myTV = new TV();   // TV object
+
+        myFan.turnOn(); // Calls Fan's turnOn() method
+        myTV.turnOn();  // Calls TV's turnOn() method
+    }
+}
+Objects are created using superclass references (Appliance):
+
+java
+Copy
+Edit
+Appliance myFan = new Fan();
+Appliance myTV = new TV();
+This demonstrates polymorphism because the actual method called is based on the object type.
+
+When calling myFan.turnOn();, it executes Fan's implementation.
+
+When calling myTV.turnOn();, it executes TV's implementation.
+
+
+
+
+
+
+
+
+Expected Output
+csharp
+Copy
+Edit
+Fan is now spinning!
+TV is now displaying channels!
+This confirms that each subclass implements the abstract method differently.
